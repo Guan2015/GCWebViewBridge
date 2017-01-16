@@ -6,7 +6,7 @@
     GCWebView *webView = [[GCWebView alloc] initWithFrame:frame];
     [webView loadWithUrl:testUrl]
     [self.view addSubview:webView];
- #### 在GCWebView.m中
+#### 在GCWebView.m中
     // 构造可执行JS
     NSString *jsString = @"alert('excute the js')";
     // 执行js
