@@ -67,12 +67,40 @@
     // 此处调用js中test() 会回调block
     [context evaluateScript:@"test()"];
     
+    // for test
+    [self testObjcToJs];
+    [self testJsToObjc];
+    
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     // 可以进行请求拦截、判断达到自己想要的结果
     return YES;
+}
+
+#pragma mark - test
+
+- (void)testObjcToJs
+{
+    JSContext *context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    NSString *js = @"function math(a,b) {return a*b}";
+    
+    if (_webView) {
+        [context evaluateScript:js];
+        // OC调用JS方法
+        JSValue *value = [context[@"math"] callWithArguments:@[@4,@2]];
+        NSLog(@"%d",[value toInt32]);
+    }
+}
+
+- (void)testJsToObjc
+{
+    JSContext *context = [_webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    context[@"add"] = ^(NSInteger a, NSInteger b) {
+        NSLog(@"---%@", @(a + b));
+    };
+    [context evaluateScript:@"add(2,3)"];
 }
 
 
