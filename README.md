@@ -18,9 +18,9 @@
             alert("test alert");
             return "0";
         }
-    </script>
-    </br>
-    </br>
+    </scr
+ </br>
+ </br>
     在本demo中使用
     NSString *testUrl = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html"];
     CGRect frame = [UIScreen mainScreen].bounds;
