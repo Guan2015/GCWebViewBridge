@@ -1,6 +1,6 @@
 # GCWebViewBridge
 
-### 测试OC调用JS
+### [1]测试OC调用JS
     NSString *testUrl = @"https://www.baidu.com";
     CGRect frame = [UIScreen mainScreen].bounds;
     GCWebView *webView = [[GCWebView alloc] initWithFrame:frame];
@@ -11,7 +11,7 @@
     NSString *jsString = @"alert('excute the js')";
     // 执行js
     [context evaluateScript:jsString];
-### 测试JS调用OC(实际上的回调)
+### [2]测试JS调用OC(实际上的回调)
     比如有这样一段JS
     <script>
         function test(){
@@ -19,6 +19,8 @@
             return "0";
         }
     </script>
+    <br>
+    <br>
     在本demo中使用
     NSString *testUrl = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"html"];
     CGRect frame = [UIScreen mainScreen].bounds;
