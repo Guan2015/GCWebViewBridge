@@ -41,3 +41,14 @@
     };
     // 此处调用js中test() 会回调block
     [context evaluateScript:@"test()"];
+ 
+### JSExport
+    @protocol GCJSProtocol <JSExport>
+
+    - (NSInteger)add:(NSInteger)x y:(NSInteger)y;
+
+    @property (nonatomic ,assign)NSInteger sum;
+
+    @end
+    
+    在GCJSService实现GCJSProtocol的代理方法,详细查看demo
